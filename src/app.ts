@@ -19,6 +19,7 @@ app.post("/email", (req, res) => {
   if (!isIEmailData(req.body.data)) {
     console.error(`${JSON.stringify(req.body)} is not IEmailData`);
     res.send({ error: "Data is not correctly formatted, check inputs." });
+    return;
   }
 
   sendEmail(req.body.data);
