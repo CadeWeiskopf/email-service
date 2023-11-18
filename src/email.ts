@@ -5,9 +5,9 @@ import {
   EMAIL_TO,
 } from "./data/env-vars";
 import nodemailer from "nodemailer";
-import { IEmailData } from "./data/shared-types/types";
+import { EmailData } from "./data/shared-types/types";
 
-export const sendEmail = (emailData: IEmailData) => {
+export const sendEmail = (emailData: EmailData) => {
   const transporter = nodemailer.createTransport({
     service: EMAIL_SERVICE,
     auth: {
