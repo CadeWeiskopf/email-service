@@ -1,9 +1,3 @@
-[submodule "shared-types"]
-	path = shared-types
-	url = https://github.com/CadeWeiskopf/shared-types
-[submodule "src/shared-types"]
-	path = src/shared-types
-	url = https://github.com/CadeWeiskopf/shared-types
 [submodule "src/data/shared-types"]
 	path = src/data/shared-types
 	url = https://github.com/CadeWeiskopf/shared-types
