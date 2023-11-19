@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import { REQUEST_ORIGIN, SERVICE_PORT } from "./data/env-vars";
 import { sendEmail } from "./email";
-import { isIEmailData } from "./data/shared-types/types";
+import { isEmailData } from "./data/shared-types/types";
 
 const app = express();
 
@@ -16,13 +16,13 @@ app.use(
 );
 
 app.post("/email", (req, res) => {
-  if (!isIEmailData(req.body.data)) {
+  if (!isEmailData(req.body)) {
     console.error(`${JSON.stringify(req.body)} is not IEmailData`);
     res.send({ error: "Data is not correctly formatted, check inputs." });
     return;
   }
 
-  sendEmail(req.body.data);
+  sendEmail(req.body);
 
   res.send({ data: "Email has been sent!" });
 });
