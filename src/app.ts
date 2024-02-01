@@ -1,4 +1,5 @@
 import express from "express";
+import rateLimit from "express-rate-limit";
 import cors from "cors";
 import { REQUEST_ORIGIN, SERVICE_PORT } from "./data/env-vars";
 import { sendEmail } from "./email";
@@ -6,6 +7,12 @@ import { isEmailData } from "./data/shared-types/types";
 
 const app = express();
 
+// 2 per minute
+const limiter = rateLimit({
+  limit: 2,
+});
+
+app.use(limiter);
 app.use(express.json());
 app.use(
   cors({
