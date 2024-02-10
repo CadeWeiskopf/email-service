@@ -34,6 +34,10 @@ app.post("/email", (req, res) => {
   res.send({ data: "Email has been sent!" });
 });
 
+app.get("/", (req, res) => {
+  res.send("healthy");
+});
+
 app.listen(SERVICE_PORT, () => {
   console.log(`listening on port ${SERVICE_PORT}`);
 });
