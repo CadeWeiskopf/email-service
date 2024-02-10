@@ -7,9 +7,8 @@ import { isEmailData } from "./data/shared-types/types";
 
 const app = express();
 
-// 2 per minute
 const limiter = rateLimit({
-  limit: 2,
+  limit: 5,
 });
 
 app.use(limiter);
@@ -17,7 +16,7 @@ app.use(express.json());
 app.use(
   cors({
     allowedHeaders: "Content-Type",
-    methods: "POST",
+    methods: ["GET", "HEAD", "POST"],
     origin: REQUEST_ORIGIN,
   })
 );
@@ -39,5 +38,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(SERVICE_PORT, () => {
-  console.log(`listening on port ${SERVICE_PORT}`);
+  console.log(`listening on port ${SERVICE_PORT}, cors: ${REQUEST_ORIGIN}`);
 });
