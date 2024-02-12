@@ -17,7 +17,7 @@ app.use(
   cors({
     allowedHeaders: "Content-Type",
     methods: ["GET", "HEAD", "POST"],
-    origin: REQUEST_ORIGIN,
+    origin: REQUEST_ORIGIN.split(","),
   })
 );
 
@@ -38,5 +38,7 @@ app.get("/", (req, res) => {
 });
 
 app.listen(SERVICE_PORT, () => {
-  console.log(`listening on port ${SERVICE_PORT}, cors: ${REQUEST_ORIGIN}`);
+  console.log(
+    `listening on port ${SERVICE_PORT}, cors: ${REQUEST_ORIGIN.split(",")}`
+  );
 });
